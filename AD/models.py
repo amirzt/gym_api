@@ -29,3 +29,6 @@ class CustomAd(models.Model):
     package_name = models.CharField(null=False, max_length=100, blank=False)
 
 
+class ScreenShot(models.Model):
+    ad = models.ForeignKey(CustomAd, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='ads/screenshots/')
