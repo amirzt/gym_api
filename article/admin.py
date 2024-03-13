@@ -6,7 +6,7 @@ from article.models import Article
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at')
+    list_display = ('title', 'created_at', 'locale')
     list_filter = ('package_name',)
     search_fields = ('title__startswith',)
-    fields = ('title', 'time', 'image', 'content', 'package_name')
+    fields = ('title', 'time', 'image', 'content', 'package_name', 'locale')
