@@ -9,6 +9,10 @@ from article.serializers import ArticleSerializer
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def get_articles(request):
-    articles = Article.objects.filter(package_name=request.data['package_name'])
+    articles = Article.objects.filter(
+        package_name=request.data['package_name']
+    )
+    if 'locale' in request.data:
+        articles = articles.filter(locale=request.data['locale'])
     serializer = ArticleSerializer(articles, many=True)
     return Response(serializer.data)
